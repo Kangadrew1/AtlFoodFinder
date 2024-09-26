@@ -5,16 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Food Finder{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="../../static/css/base.css">
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <!-- Include Google Maps JavaScript API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKQS3lLxpPb-qaJVGbpC8fiAoCFSNeiJg&callback=initMap" defer></script>
     {% block extra_head %}{% endblock %}
 </head>
+
 <body>
     <header>
-        <h1><a href="{% url 'index' %}">Food Finder</a></h1>
+        <h1 id="title"><a id = "titleURL" href="{% url 'index' %}">Atlanta Food Finder</a></h1>
         <nav>
             {% if user.is_authenticated %}
                 <span>Welcome, {{ user.username }} | <a href="{% url 'logout' %}">Logout</a></span>
@@ -23,11 +25,14 @@
             {% endif %}
         </nav>
     </header>
+
     <div class="container">
         {% block content %}{% endblock %}
     </div>
+
     <footer>
         <p>&copy; {% now "Y" %} Food Finder</p>
     </footer>
+
 </body>
 </html>
